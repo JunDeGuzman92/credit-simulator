@@ -2,6 +2,12 @@
 
 A full-stack machine learning application that simulates credit risk assessment using the UCI German Credit dataset. Built with FastAPI, LightGBM, Next.js, and TypeScript.
 
+## Live Demo
+
+- **App**: https://credit-sim-ml.vercel.app
+- **API**: https://credit-simulator-production.up.railway.app
+- **API Docs**: https://credit-simulator-production.up.railway.app/docs
+
 ## Features
 
 - **ML-Powered Predictions**: LightGBM classifier trained on 1000+ German credit records
@@ -134,8 +140,7 @@ curl -X POST http://localhost:8000/predict \
 
 ## Deployment
 
-The app is deployed with the frontend on **Vercel** and the backend API on **Railway**.
-Live URLs are added here once deployed.
+The app is deployed with the frontend on **Vercel** (https://credit-sim-ml.vercel.app) and the backend API on **Railway** (https://credit-simulator-production.up.railway.app).
 
 ### Deploy to Production
 
