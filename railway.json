@@ -6,6 +6,7 @@
     "dockerContext": "backend"
   },
   "deploy": {
+    "startCommand": "python backend/serve.py",
     "healthcheckPath": "/health",
     "healthcheckTimeout": 300,
     "restartPolicyType": "ON_FAILURE",

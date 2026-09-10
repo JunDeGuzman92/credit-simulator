@@ -27,5 +27,5 @@ EXPOSE 8000
 HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
     CMD curl -f http://localhost:${PORT:-8000}/health || exit 1
 
-# Run the application (use Railway's $PORT when present)
-CMD ["sh", "-c", "uvicorn backend.api:app --host 0.0.0.0 --port ${PORT:-8000}"]
+# Run the application (serve.py reads $PORT itself — no shell expansion needed)
+CMD ["python", "backend/serve.py"]
