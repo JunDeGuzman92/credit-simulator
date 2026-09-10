@@ -134,17 +134,55 @@ curl -X POST http://localhost:8000/predict \
 
 ## Deployment
 
-### Backend (Railway/Render)
+### Live Demo
 
-1. Create `Dockerfile` in `backend/`
-2. Set environment variables
-3. Deploy with `railway up` or connect GitHub
+- **Frontend**: [https://credit-simulator.vercel.app](https://credit-simulator.vercel.app) (Vercel)
+- **Backend API**: [https://credit-simulator-api.railway.app](https://credit-simulator-api.railway.app) (Railway)
 
-### Frontend (Vercel)
+### Deploy to Production
 
-1. Connect GitHub repo to Vercel
-2. Set build command: `cd frontend && npm run build`
-3. Set output directory: `frontend/.next`
+#### Backend (Railway)
+
+1. **Install Railway CLI**:
+   ```bash
+   npm install -g @railway/cli
+   ```
+
+2. **Login to Railway**:
+   ```bash
+   railway login
+   ```
+
+3. **Deploy from backend directory**:
+   ```bash
+   cd backend
+   railway init
+   railway up
+   ```
+
+4. **Set environment variables** in Railway dashboard:
+   - `FRONTEND_ORIGINS`: `https://credit-simulator.vercel.app`
+
+#### Frontend (Vercel)
+
+1. **Install Vercel CLI**:
+   ```bash
+   npm install -g vercel
+   ```
+
+2. **Deploy from project root**:
+   ```bash
+   vercel --prod
+   ```
+
+3. **Set environment variables** in Vercel dashboard:
+   - `NEXT_PUBLIC_API_URL`: `https://credit-simulator-api.railway.app`
+
+#### Alternative: GitHub Integration
+
+1. **Connect GitHub repo** to Railway and Vercel
+2. **Auto-deploy** on push to `main` branch
+3. **Environment variables** set in platform dashboards
 
 ## Testing
 
