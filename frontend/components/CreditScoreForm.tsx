@@ -76,6 +76,7 @@ export function CreditScoreForm() {
       setResult(data);
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Prediction failed');
+      console.error('Prediction error:', err);
     } finally {
       setLoading(false);
     }
@@ -88,6 +89,19 @@ export function CreditScoreForm() {
     setInput((prev) => ({
       ...prev,
       [name]: value,
+    }));
+  };
+
+  // Fix: Convert string values to numbers for numeric fields
+  const handleSelectChange = (
+    name: keyof CreditInput,
+    value: string
+  ) => {
+    setInput((prev) => ({
+      ...prev,
+      [name]: name === 'installment_rate' || name === 'residence_years' || name === 'dependents'
+        ? Number(value)
+        : value,
     }));
   };
 
@@ -117,7 +131,7 @@ export function CreditScoreForm() {
                     id={field.name}
                     name={field.name}
                     value={input[field.name] as string}
-                    onChange={(e) => handleInputChange(field.name, e.target.value)}
+                    onChange={(e) => handleSelectChange(field.name, e.target.value)}
                     className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                     required
                   >
