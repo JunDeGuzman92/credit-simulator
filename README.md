@@ -130,7 +130,7 @@ curl -X POST http://localhost:8000/predict \
 ## Model Details
 
 **Algorithm**: LightGBM Classifier  
-**Dataset**: UCI German Credit (1000 samples, 20 features)  
+**Dataset**: [UCI Statlog (German Credit Data)](https://archive.ics.uci.edu/dataset/144/statlog+german+credit+data) (1000 samples, 20 features)  
 **Target**: Binary classification (good credit / high-risk credit)
 
 **Evaluation Metrics**:
@@ -211,7 +211,7 @@ This project is for educational purposes only. The simulated credit scores are n
 
 ## Acknowledgments
 
-- UCI Machine Learning Repository for the German Credit dataset
+- [Statlog (German Credit Data)](https://archive.ics.uci.edu/dataset/144/statlog+german+credit+data), UCI Machine Learning Repository
 - FastAPI and scikit-learn communities
 - Next.js and Vercel for the excellent developer experience
 
