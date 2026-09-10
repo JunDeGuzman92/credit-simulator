@@ -134,49 +134,44 @@ curl -X POST http://localhost:8000/predict \
 
 ## Deployment
 
-### Live Demo
-
-- **Frontend**: [https://credit-simulator.vercel.app](https://credit-simulator.vercel.app) (Vercel)
-- **Backend API**: [https://credit-simulator-api.railway.app](https://credit-simulator-api.railway.app) (Railway)
+The app is deployed with the frontend on **Vercel** and the backend API on **Railway**.
+Live URLs are added here once deployed.
 
 ### Deploy to Production
 
-#### Backend (Railway)
+Deploy in this order: **backend first**, then frontend (the frontend needs the backend URL).
 
-1. **Install Railway CLI**:
-   ```bash
-   npm install -g @railway/cli
-   ```
+#### 1. Backend (Railway)
 
-2. **Login to Railway**:
-   ```bash
-   railway login
-   ```
+1. Go to [railway.app](https://railway.app) → **Sign in with GitHub**
+2. **New Project** → **Deploy from GitHub repo** → select `credit-simulator`
+3. In the project **Settings**:
+   - **Root Directory**: `backend`
+   - Railway auto-detects the `Dockerfile` and builds from it
+4. In **Variables**, add:
+   - `FRONTEND_ORIGINS` = your Vercel URL (add after step 2; use `*` temporarily for testing)
+5. In **Settings → Networking**, click **Generate Domain** to get your API URL
+   (e.g. `https://credit-simulator-api-production.up.railway.app`)
+6. Verify: open `<your-railway-url>/health` — should return `{"status":"ok"}`
 
-3. **Deploy from backend directory**:
-   ```bash
-   cd backend
-   railway init
-   railway up
-   ```
+#### 2. Frontend (Vercel)
 
-4. **Set environment variables** in Railway dashboard:
-   - `FRONTEND_ORIGINS`: `https://credit-simulator.vercel.app`
+1. Go to [vercel.com](https://vercel.com) → **Sign in with GitHub**
+2. **Add New Project** → **Import** `credit-simulator`
+3. Configure:
+   - **Framework Preset**: Next.js
+   - **Root Directory**: `frontend`
+   - **Environment Variable**: `NEXT_PUBLIC_API_URL` = your Railway URL from step 1
+     (no trailing slash, e.g. `https://credit-simulator-api-production.up.railway.app`)
+4. Click **Deploy**
+5. Verify: open your Vercel URL and submit the form — a prediction should appear
 
-#### Frontend (Vercel)
+#### 3. Final step: lock down CORS
 
-1. **Install Vercel CLI**:
-   ```bash
-   npm install -g vercel
-   ```
+Back in **Railway → Variables**, update:
+- `FRONTEND_ORIGINS` = your actual Vercel URL (e.g. `https://credit-simulator.vercel.app`)
 
-2. **Deploy from project root**:
-   ```bash
-   vercel --prod
-   ```
-
-3. **Set environment variables** in Vercel dashboard:
-   - `NEXT_PUBLIC_API_URL`: `https://credit-simulator-api.railway.app`
+Both platforms auto-redeploy when you push to `main`.
 
 #### Alternative: GitHub Integration
 

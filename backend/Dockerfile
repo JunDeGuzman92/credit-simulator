@@ -1,12 +1,13 @@
-# Use Python 3.14 slim image for smaller size
+# Use Python 3.14 slim image to match local dev (model was pickled with 3.14)
 FROM python:3.14-slim
 
 # Set working directory
 WORKDIR /app
 
-# Install system dependencies
+# Install system dependencies (gcc + curl for builds and health checks)
 RUN apt-get update && apt-get install -y \
     gcc \
+    curl \
     && rm -rf /var/lib/apt/lists/*
 
 # Copy requirements first for better caching
