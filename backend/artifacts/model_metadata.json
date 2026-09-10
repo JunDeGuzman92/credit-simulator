@@ -1,0 +1,98 @@
+{
+  "model_type": "LightGBM binary classifier",
+  "dataset": "UCI German Credit",
+  "target_mapping": {
+    "0": "good",
+    "1": "bad"
+  },
+  "feature_columns": [
+    "checking_status",
+    "credit_history",
+    "purpose",
+    "savings",
+    "employment",
+    "personal_status",
+    "other_debtors",
+    "property",
+    "other_installment_plans",
+    "housing",
+    "job",
+    "telephone",
+    "foreign_worker",
+    "duration_months",
+    "credit_amount",
+    "installment_rate",
+    "residence_years",
+    "age",
+    "existing_credits",
+    "dependents"
+  ],
+  "categorical_columns": [
+    "checking_status",
+    "credit_history",
+    "purpose",
+    "savings",
+    "employment",
+    "personal_status",
+    "other_debtors",
+    "property",
+    "other_installment_plans",
+    "housing",
+    "job",
+    "telephone",
+    "foreign_worker"
+  ],
+  "numeric_columns": [
+    "duration_months",
+    "credit_amount",
+    "installment_rate",
+    "residence_years",
+    "age",
+    "existing_credits",
+    "dependents"
+  ],
+  "metrics": {
+    "accuracy": 0.765,
+    "precision": 0.6511627906976745,
+    "recall": 0.4666666666666667,
+    "f1": 0.5436893203883495,
+    "roc_auc": 0.7901190476190476,
+    "confusion_matrix": [
+      [
+        125,
+        15
+      ],
+      [
+        32,
+        28
+      ]
+    ],
+    "classification_report": {
+      "good": {
+        "precision": 0.7961783439490446,
+        "recall": 0.8928571428571429,
+        "f1-score": 0.8417508417508418,
+        "support": 140.0
+      },
+      "bad": {
+        "precision": 0.6511627906976745,
+        "recall": 0.4666666666666667,
+        "f1-score": 0.5436893203883495,
+        "support": 60.0
+      },
+      "accuracy": 0.765,
+      "macro avg": {
+        "precision": 0.7236705673233595,
+        "recall": 0.6797619047619048,
+        "f1-score": 0.6927200810695957,
+        "support": 200.0
+      },
+      "weighted avg": {
+        "precision": 0.7526736779736336,
+        "recall": 0.765,
+        "f1-score": 0.7523323853420942,
+        "support": 200.0
+      }
+    }
+  }
+}
