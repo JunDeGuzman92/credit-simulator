@@ -8,6 +8,8 @@ A full-stack machine learning application that simulates credit risk assessment 
 - **API**: https://credit-simulator-production.up.railway.app
 - **API Docs**: https://credit-simulator-production.up.railway.app/docs
 
+![Credit Score Simulator — live prediction](screenshot.png)
+
 ## Features
 
 - **ML-Powered Predictions**: LightGBM classifier trained on 1000+ German credit records
